@@ -1,0 +1,56 @@
+﻿<Window x:Class="MVVM_Nest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_Nest.ViewModel"
+        mc:Ignorable="d"
+        Title="MVVM Starter Template" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:PersonViewModel/>
+    </Window.DataContext>
+
+    <Grid Background="{DynamicResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Buttons for switching views -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="Show First Names" Command="{Binding ShowFirstNamesCommand}" Margin="5"/>
+            <Button Content="Show Last Names" Command="{Binding ShowLastNamesCommand}" Margin="5"/>
+        </StackPanel>
+
+        <!-- ListBox to display the filtered list -->
+        <ListBox Grid.Row="1" ItemsSource="{Binding FilteredPeople}" 
+                 Background="{DynamicResource BackgroundBrush}"
+                 MaxHeight="300"
+                 MaxWidth="400"
+                 BorderBrush="{DynamicResource ForegroundBrush}"
+                 BorderThickness="1"
+                 Padding="10"
+                 Margin="20">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{DynamicResource SecondaryBrush}" 
+                            CornerRadius="5" 
+                            Padding="10" 
+                            Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="{Binding FirstName}" 
+                                       FontSize="16" 
+                                       FontWeight="Bold" 
+                                       Foreground="{DynamicResource ForegroundBrush}"/>
+                            <TextBlock Text="{Binding LastName}" 
+                                       FontSize="14" 
+                                       Foreground="{DynamicResource ForegroundBrush}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+
+</Window>
