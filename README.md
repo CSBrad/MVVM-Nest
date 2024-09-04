@@ -26,7 +26,7 @@ To get started with the MVVM Nest template, follow these steps:
 
 1. **Clone the Repository**
 
-   `git clone https://github.com/yourusername/MVVM-Nest.git`
+   `git clone https://github.com/CSBrad/MVVM-Nest.git`
 
 2. **Open the Project**
 
